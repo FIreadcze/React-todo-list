@@ -13,18 +13,23 @@ class App extends Component {
     id: uuid(),
     item: "",
     editItem: false,
+    search: "",
   };
   handleChange = (e) => {
     this.setState({ item: e.target.value });
   };
-
+  updateSearch(event) {
+    this.setState({ search: event.target.value.substr(0, 20) });
+  }
   handleSubmit = (e) => {
     //zamezi aby se po kliku vyprazdnilo okno
     e.preventDefault();
+    //datum
     //place do nove polozky
     const newItem = {
       id: this.state.id,
       title: this.state.item,
+      date: new Date().toLocaleString(),
     };
     console.log(newItem);
     //...rozdeli polozky a da je do pole
